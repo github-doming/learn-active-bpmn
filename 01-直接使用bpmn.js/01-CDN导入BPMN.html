@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="https://unpkg.com/bpmn-js@6.0.2/dist/bpmn-viewer.development.js"></script>
+	<script src="./BpmnXml.js"></script>
+	<style>
+		#canvas {
+			height: 400px;
+		}
+	</style>
+</head>
+<body>
+<div id="canvas"></div>
+<script>
+  var bpmnJs = new BpmnJS({container: "#canvas"});
+  bpmnJs.importXML(BpmnXml, function (err) {
+    if (!err) {
+      console.log("success !");
+      var canvas = bpmnJs.get('canvas');
+      canvas.zoom('fit-viewport');
+    } else {
+      console.log('something went wrong:', err);
+    }
+  });
+
+</script>
+
+</body>
+</html>
